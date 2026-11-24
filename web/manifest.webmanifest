@@ -1,6 +1,6 @@
 {
-  "name": "PC 청진기 사진 진단",
-  "short_name": "사진 진단",
+  "name": "PC 청진기 휴대폰 진단",
+  "short_name": "PC 청진기",
   "lang": "ko",
   "start_url": "./",
   "scope": "./",

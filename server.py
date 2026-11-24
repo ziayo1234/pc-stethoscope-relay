@@ -19,6 +19,7 @@ MAX_BODY, MAX_KEEP, MAX_MSGS, MAX_ROOMS, MAX_WAITING = 4000, 20, 400, 500, 300  
 FILES = {
     "/": ("index.html", "text/html; charset=utf-8"),
     "/app.js": ("app.js", "text/javascript; charset=utf-8"),
+    "/boot.js": ("boot.js", "text/javascript; charset=utf-8"),
     "/photo.js": ("photo.js", "text/javascript; charset=utf-8"),
     "/link.js": ("link.js", "text/javascript; charset=utf-8"),
     "/sw.js": ("sw.js", "text/javascript; charset=utf-8"),
