@@ -1,5 +1,5 @@
 // 인터넷 없이도 열리게 화면 파일만 보관 (연결 주소 /api는 보관 안 함)
-var CACHE = "pcs-photo-1", FILES = ["./", "app.js", "photo.js", "link.js", "manifest.webmanifest", "icon.svg", "icon-192.png", "icon-512.png"];
+var CACHE = "pcs-photo-2", FILES = ["./", "app.js", "photo.js", "link.js", "manifest.webmanifest", "icon.svg", "icon-192.png", "icon-512.png"];
 
 self.addEventListener("install", function (e) {
   e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(FILES); }).then(function () { return self.skipWaiting(); }));

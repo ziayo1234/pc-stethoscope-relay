@@ -13,15 +13,12 @@
       crit: "메인보드나 전원 장치(파워) 손상이 의심됩니다. 전원을 연결하지 말고 수리점에 맡기세요. 이 상태로 켜면 다른 부품까지 망가질 수 있습니다."},
     screen: {note: "화면 줄·죽은 픽셀·얼룩을 찾습니다. 아래 순서대로 단색 화면을 찍어 올리세요.",
       groups: [["화면", [["line", "세로 또는 가로 줄이 계속 보인다", 2], ["patch", "화면 일부가 번지거나 멍든 것처럼 보인다", 3], ["spot", "작은 점(죽은 픽셀)이 있다", 1], ["bleed", "밝기가 구역마다 다르다(빛샘)", 1]]]],
-      crit: "모니터 패널 손상이 의심됩니다. 다른 모니터나 다른 케이블(HDMI 등)로 연결해도 같으면 그래픽카드 문제, 정상으로 나오면 모니터나 케이블 문제입니다."},
-    battery: {note: "부푼 배터리는 사진 모양만으로는 판단하기 어려워 사진 품질만 확인합니다. 오른쪽 체크리스트로 확인하세요.",
-      groups: [["겉모습", [["lift", "바닥이나 트랙패드가 들떠 있다", 3], ["bulge", "키보드 가운데가 솟아올랐다", 3], ["rock", "본체가 책상 위에서 흔들린다(바닥이 볼록)", 2], ["hot", "충전 중 바닥이 유독 뜨겁다", 1], ["short", "배터리 사용 시간이 1시간도 안 된다", 1]]]],
-      crit: "배터리 팽창이 의심됩니다. 지금 충전기를 빼고 전원을 끄세요. 눌러서 되돌리려 하지 말고 서비스센터에서 교체하세요. 부푼 리튬 배터리는 화재 위험이 있습니다."}
+      crit: "모니터 패널 손상이 의심됩니다. 다른 모니터나 다른 케이블(HDMI 등)로 연결해도 같으면 그래픽카드 문제, 정상으로 나오면 모니터나 케이블 문제입니다."}
   };
-  var TYPES = [["board", "본체 내부"], ["screen", "모니터 화면"], ["battery", "노트북 바닥"]];
-  var TIPS = {board: "옆판 열기 · 전원 선 뽑기 · 밝은 곳", screen: "단색 화면을 정면에서 꽉 차게", battery: "사진은 품질만 확인 · 아래 항목으로 판단"};
+  var TYPES = [["board", "본체 내부"], ["screen", "모니터 화면"]];
+  var TIPS = {board: "옆판 열기 · 전원 선 뽑기 · 밝은 곳", screen: "단색 화면을 정면에서 꽉 차게"};
   var FOUND = {line: "line", patch: "patch", spot: "spot", dust: "dust", stain: "burn"};  // 사진 분석 → 체크 항목
-  var PHOTOS = [], photoSel = null, photoUser = {board: {}, screen: {}, battery: {}}, photoSeq = 0, touched = {};
+  var PHOTOS = [], photoSel = null, photoUser = {board: {}, screen: {}}, photoSeq = 0, touched = {};
   var LINK = null;
 
   $("ptype").innerHTML = TYPES.map(function (t, i) { return '<label><input type="radio" name="ptype" value="' + t[0] + '"' + (i ? "" : " checked") + ">" + t[1] + "</label>"; }).join("");
@@ -128,7 +125,7 @@
       (fan ? " CPU 쿨러 팬 선은 꼭 꽂고 켜세요." : "");
     if (score >= 3) { bx.className = "verdict crit"; bx.innerHTML = '<span class="head">위험</span><span>' + t.crit + "</span>" + (loose ? "<span>" + redo + "</span>" : ""); }
     else if (loose) { bx.className = "verdict warn"; bx.innerHTML = '<span class="head">다시 꽂기</span><span>' + redo + "</span>"; }
-    else if (score >= 1) { bx.className = "verdict warn"; bx.innerHTML = '<span class="head">점검 필요</span><span>당장 위험한 손상은 아닙니다. PC 청진기 진단 결과의 온도·배터리 항목과 함께 확인하세요.</span>'; }
+    else if (score >= 1) { bx.className = "verdict warn"; bx.innerHTML = '<span class="head">점검 필요</span><span>당장 위험한 손상은 아닙니다. PC 청진기 진단 결과의 온도 항목과 함께 확인하세요.</span>'; }
     else { bx.className = "verdict ok"; bx.innerHTML = '<span class="head">이상 없음</span>'; }
     queueResult();
   }
