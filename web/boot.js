@@ -106,11 +106,7 @@
       else if (a === "ok") S.end = "ok";
       else if (a === "next") { if (S.i < b.steps.length - 1) S.i++; else S.end = "shop"; }
       else if (a === "back") S.i = Math.max(0, S.i - 1);
-      else if (a === "photo") {
-        var r = document.querySelector('#ptype input[value="board"]');
-        if (r && !r.checked) { r.checked = true; r.dispatchEvent(new Event("change", {bubbles: true})); }
-        view("photo"); return;
-      }
+      else if (a === "photo") { view("photo"); return; }
     }
     render();
     if (!t.dataset.ask) window.scrollTo(0, 0);
